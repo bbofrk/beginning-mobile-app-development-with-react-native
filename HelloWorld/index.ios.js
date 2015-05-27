@@ -9,15 +9,29 @@ var {
   AppRegistry,
   StyleSheet,
   Text,
+  TextInput,
   View,
 } = React;
 
 var HelloWorld = React.createClass({
+  getInitialState: function() {
+    return {
+      name: 'World'
+    }
+  },
+  onNameChanged: function(event) {
+    this.setState({name: event.nativeEvent.text});
+  },
   render: function() {
     return (
       <View style={styles.container}>
+        <TextInput
+          style={styles.nameInput}
+          onChange={this.onNameChanged}
+          placeholder='Who should be the greeted?'
+        />
         <Text style={styles.welcome}>
-          Welcome to React Native! Testing
+          Hello, {this.state.name} !
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
@@ -48,6 +62,13 @@ var styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  nameInput: {
+    height: 36,
+    padding: 4,
+    margin: 24,
+    fontSize: 18,
+    borderWidth: 1
+  }
 });
 
 AppRegistry.registerComponent('HelloWorld', () => HelloWorld);
