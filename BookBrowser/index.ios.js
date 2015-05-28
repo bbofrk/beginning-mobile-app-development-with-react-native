@@ -22,7 +22,10 @@ var BookBrowser = React.createClass({
         <TextInput
           style={styles.textInput}
           placeholder="e.g. Javascript or Mobile"
-          />
+          returnKeyType="search"
+          enablesReturnKeyAutomatically="true"
+          onEndEditing={ event => console.log(event.nativeEvent.text) }
+        />
       </View>
     );
   }
@@ -34,7 +37,7 @@ var styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#5AC8FA'
+    backgroundColor: Math.random() > 0.5 ? '#5AC8FA' : '#4CD964'
   },
   headline: {
     fontSize: 36,
@@ -50,11 +53,11 @@ var styles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 0.5,
-    borderColor: '#BEBE93',
+    borderColor: '#8E8E93',
     backgroundColor: '#FFF',
     height: 40,
-    marginLeft: 50,
-    marginRight: 50,
+    marginLeft: 60,
+    marginRight: 60,
     padding: 8
   }
 });
